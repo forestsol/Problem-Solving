@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.vs": true,
+      "**/x64": true,
+      "**/Debug": true,
+      "**/Release": true
+    },
+    "files.associations": {
+      "*.tcc": "cpp",
+      "*.filters": "xml",
+      "*.vcxproj": "xml",
+      "*.sln": "plaintext"
+    },
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "editor.tabSize": 4
+  }
+}

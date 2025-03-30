@@ -1,25 +1,39 @@
 // .vscode/tasks.json
 {
-    "version": "2.0.0",
-    "tasks": [
-      {
-        "label": "Build C++",
-        "type": "shell",
-        "command": "g++",
-        "args": [
-          "-std=c++17",
-          "-O2",
-          "${file}",
-          "-o",
-          "${fileDirname}/${fileBasenameNoExtension}.exe"
-        ],
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        },
-        "problemMatcher": ["$gcc"],
-        "detail": "C++ 컴파일 명령어"
-      }
-    ]
-  }
-  
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build C++",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++17",
+        "-O2",
+        "\"${file}\"",
+        "-o",
+        "\"${fileDirname}/${fileBasenameNoExtension}.exe\""
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true  // 기본 빌드로 이걸 사용
+      },
+      "problemMatcher": ["$gcc"],
+      "detail": "실전용 C++ 빌드 (빠른 실행)"
+    },
+    {
+      "label": "Build C++ Debug",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-std=c++17",
+        "-g",
+        "\"${file}\"",
+        "-o",
+        "\"${fileDirname}/${fileBasenameNoExtension}.exe\""
+      ],
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "detail": "디버깅용 C++ 빌드 (gdb 사용 가능)"
+    }
+  ]
+}

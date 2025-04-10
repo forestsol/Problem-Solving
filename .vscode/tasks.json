@@ -11,8 +11,16 @@
         "-O2",
         "\"${file}\"",
         "-o",
-        "\"${fileDirname}/${fileBasenameNoExtension}.exe\""
+        "\"${fileDirname}/${fileBasenameNoExtension}.exe\"",
+        "&&",
+        "\"${fileDirname}/${fileBasenameNoExtension}.exe\"",
       ],
+      "options": {
+        "shell": {
+          "executable": "cmd.exe",
+          "args": ["/d", "/c"]
+        }
+      },
       "group": {
         "kind": "build",
         "isDefault": true  // 기본 빌드로 이걸 사용

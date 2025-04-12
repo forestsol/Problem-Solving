@@ -10,4 +10,8 @@
 ## 📚 Table of Contents
 - [ 2025-03-30 - 준비 ] ([/docs/2025-03-30.md](./docs/2025-03-30.md))
 
+## 💡 Tips
+### 🤖 1. VScode GitHub Copilot 켜고 끄는 방법:
+1. 설정 열기 (Ctrl + Shift + P)
+2. Copilot: Enable or Copilot: Disable 입력
 

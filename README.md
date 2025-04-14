@@ -9,6 +9,10 @@
 
 ## 📚 Table of Contents
 - [ 2025-03-30 - 준비 ] ([/docs/2025-03-30.md](./docs/2025-03-30.md))
+- [ 2025-04-07 ] ([/docs/2025-04-07.md](./docs/2025-04-07.md))
+- [ 2025-04-10 ] ([/docs/2025-04-10.md](./docs/2025-04-10.md))
+- [ 2025-04-13 ] ([/docs/2025-04-13.md](./docs/2025-04-13.md))
+- [ 2025-04-14 ] ([/docs/2025-04-14.md](./docs/2025-04-14.md))
 
 ## 💡 Tips
 ### 1. VScode 초기세팅
@@ -116,6 +120,23 @@ g++ hello.cpp -o hello
 }
 ```
 
+✅ 9. VSCode 탐색기에서 .exe 숨김 설정 + gitignore
+1. Ctrl + Shift + P → Preferences: Open Workspace Settings (JSON) 검색
+2. 중괄호 안에 아래 코드 붙여넣고 ctrl+s로 세이브
+```json
+{
+  "files.exclude": {
+    "**/*.exe": true
+  }
+}
+```
+3. .gitignore에 exe무시 추가
+```bash
+# .gitignore
+*.exe
+```
+
+---
 ### 🤖 2. VScode GitHub Copilot 켜고 끄는 방법:
 1. 설정 열기 (Ctrl + Shift + P)
 2. Copilot: Enable or Copilot: Disable 입력

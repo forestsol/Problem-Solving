@@ -77,25 +77,17 @@ int main() {
 
             
 
-            // 색칠
+             // 색칠
             
                 
-                if(nx >= n) continue;
-                if(nx < 0) continue;
-                if(ny >= n) continue;
-                if(ny < 0) continue;
-                dead[nx][ny] = time;
-            }
+            //     if(nx >= n) continue;
+            //     if(nx < 0) continue;
+            //     if(ny >= n) continue;
+            //     if(ny < 0) continue;
+            //     dead[nx][ny] = time;
+            // }
 
         }
-
-            
-            
-
-
-
-        }
-
         // 결과 출력
         for(int k = 0; k < n; k++){
             for(int l = 0; l < n; l++){

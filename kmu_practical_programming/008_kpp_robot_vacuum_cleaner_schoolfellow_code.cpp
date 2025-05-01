@@ -1,85 +1,77 @@
 #include <iostream>
+#include <string>
 #include <vector>
+#include <algorithm>
+
 using namespace std;
 
-int dx[4] = {-1, 0, 1, 0}; // 북 동 남 서
-int dy[4] = {0, 1, 0, -1};
+int dc[] = {0, 1, 0, -1};
+int dr[] = {-1, 0, 1, 0};
 
-int cleanRoom(int n, int r, int c, int d, vector<vector<int>>& room)
+int main(void)
 {
-    vector<vector<bool>> cleaned(n, vector<bool>(n, false));
-    int cleaned_count = 0;
+    int t;
+    cin >> t;
 
-    while (true)
-    {
-        if (!cleaned[r][c])
-        {
-            cleaned[r][c] = true;
-            cleaned_count++;
-        }
-
-        bool found = false;
-
-        for (int i = 0; i < 4; i++)
-        {
-            d = (d + 3) % 4;
-            int nr = r + dx[d];
-            int nc = c + dy[d];
-
-            if (room[nr][nc] == 0 && !cleaned[nr][nc])
-            {
-                r = nr;
-                c = nc;
-                found = true;
-                break;
-            }
-        }
-
-        if (!found)
-        {
-            int back = (d + 2) % 4;
-            int br = r + dx[back];
-            int bc = c + dy[back];
-
-            if (room[br][bc] == 1)
-            {
-                break;
-            }
-            else
-            {
-                r = br;
-                c = bc;
-            }
-        }
-    }
-
-    return cleaned_count;
-}
-
-int main()
-{
-    int test_case;
-    cin >> test_case;
-
-    for (int t = 0; t < test_case; t++)
+    while(t --> 0)
     {
         int n, d;
         cin >> n >> d;
+        vector<vector<int>> room(n, vector<int>(n));
+        vector<vector<bool>> visited(n, vector<bool>(n));
 
         int r, c;
         cin >> r >> c;
 
-        vector<vector<int>> room(n, vector<int>(n));
-        for (int i = 0; i < n; i++)
+        for(int i=0; i<n; i++)
         {
-            for (int j = 0; j < n; j++)
-            {
+            for(int j=0; j<n; j++)
                 cin >> room[i][j];
-            }
         }
 
-        cout << cleanRoom(n, r, c, d, room) << endl;
-    }
+        int result = 0;
+        while(true)
+        {
+            if(!visited[r][c])
+            {
+                visited[r][c] = true;
+                result++;
+            }
+            bool found = false;
+            for(int i=0; i<4; i++)
+            {
+                d = (d + 3) % 4;
 
+                int nr = r + dr[d];
+                int nc = c + dc[d];
+
+                if(nr >= 0 && nr < n && nc >= 0 && nc < n && room[nr][nc] == 0 && !visited[nr][nc])
+                {
+                    r = nr;
+                    c = nc;
+                    found = true;
+
+                    break;
+                }
+            }
+
+            if(found)
+                continue;
+
+            int back_d = (d + 2) % 4;
+            int br = r + dr[back_d];
+            int bc = c + dc[back_d];
+
+            if(br >= 0 && br < n && bc >= 0 && bc < n && room[br][bc] == 0)
+            {
+                r = br;
+                c = bc;
+            }
+            else
+                break;
+        }
+
+        cout << result << endl;
+    }
     return 0;
 }

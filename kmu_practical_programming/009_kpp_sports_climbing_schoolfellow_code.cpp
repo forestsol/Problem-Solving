@@ -1,130 +1,109 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#include <algorithm>
+#include <string>
+#include <algorithm> // min, max 함수 사용을 위해 필요
 
 using namespace std;
 
-int dx[] = {  0,  0, -1,  1, -2,  2, -3,  3,  0, -1,  1 };
-int dy[] = { -1,  1,  0,  0,  0,  0,  0,  0, -2, -1, -1 };
+int dx[] = { -1, 1, 0, 0 };
+int dy[] = { 0, 0, -1, 1 };
 
-bool is_moveable(int cur_x, int cur_y, int next_x, int next_y, vector<vector<char>>& rock_wall)
-{
-    if(abs(cur_x - next_x) + abs(cur_y - next_y) == 1)
-        return true;
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    if(cur_x == next_x)
-    {
-        if(rock_wall[cur_y - 1][cur_x] != '.')
-            return false;
-    }
-    else if(cur_y == next_y)
-    {
-        if(cur_x > next_x)
-            swap(cur_x, next_x);
+    int T;
+    cin >> T;
 
-        for(int i = cur_x + 1; i < next_x; ++i)
-        {
-            if(rock_wall[cur_y][i] != '.')
-                return false;
-        }
-        for(int i = cur_x; i <= next_x; ++i)
-        {
-            if(cur_y - 1 < 0)
-                return false;
-
-            if(rock_wall[cur_y - 1][i] != '.')
-                return false;
-        }
-    }
-    else
-    {
-        if(cur_x < next_x)
-        {
-            if(rock_wall[cur_y][cur_x + 1] != '.' || rock_wall[cur_y - 1][cur_x] != '.')
-                return false;
-        }
-        else
-        {
-            if(rock_wall[cur_y][cur_x - 1] != '.' || rock_wall[cur_y - 1][cur_x] != '.')
-                return false;
-        }
-    }
-
-    return true;
-}
-
-int main(void)
-{
-    int t;
-    cin >> t;
-
-    while(t --> 0)
-    {
+    while (T--) {
         int n;
         cin >> n;
 
-        vector<vector<char>> rock_wall(n, vector<char>(n));
-        vector<vector<int>> trace(n, vector<int>(n));
-        vector<vector<bool>> visited(n, vector<bool>(n));
+        vector<vector<char>> grid(n, vector<char>(n));
+        vector<vector<int>> dist(n, vector<int>(n, -1));
 
-        for(int i = 0; i < n; ++i)
-        {
-            for(int j = 0; j < n; ++j)
-            {
-                char hold;
-                cin >> hold;
-
-                rock_wall[i][j] = hold;
-
-                if(hold == 'H')
-                    trace[i][j] = -1;
-            }
-        }
+        for (int i = 0; i < n; ++i)
+            for (int j = 0; j < n; ++j)
+                cin >> grid[i][j];
 
         queue<pair<int, int>> q;
-        q.push({0, n - 1});
-        visited[n - 1][0] = true;
-        trace[n - 1][0] = 1;
 
-        while(!q.empty())
-        {
-            auto [x, y] = q.front();
+        if (grid[n - 1][0] == 'H') {
+            dist[n - 1][0] = 1;
+            q.push({ n - 1, 0 });
+        }
+
+        while (!q.empty()) {
+            int x = q.front().first;
+            int y = q.front().second;
             q.pop();
 
-            for(int i = 0; i < 11; ++i)
-            {
-                int nx = x + dx[i];
-                int ny = y + dy[i];
+            // 1. 상하좌우
+            for (int dir = 0; dir < 4; ++dir) {
+                int nx = x + dx[dir];
+                int ny = y + dy[dir];
+                if (nx >= 0 && nx < n && ny >= 0 && ny < n && grid[nx][ny] == 'H' && dist[nx][ny] == -1) {
+                    dist[nx][ny] = dist[x][y] + 1;
+                    q.push({ nx, ny });
+                }
+            }
 
-                if(nx < 0 || nx >= n || ny < 0 || ny >= n)
-                    continue;
+            // 2. 좌우 점프 2~3칸
+            for (int d : { -3, -2, 2, 3 }) {
+                int ny = y + d;
+                if (ny < 0 || ny >= n) continue;
+                if (grid[x][ny] != 'H') continue;
 
-                if(rock_wall[ny][nx] != 'H')
-                    continue;
+                bool canJump = true;
+                int from = std::min(y, ny), to = std::max(y, ny);
+                for (int k = from + 1; k < to; ++k) {
+                    if (grid[x][k] != '.' || x - 1 < 0 || grid[x - 1][k] != '.') {
+                        canJump = false;
+                        break;
+                    }
+                }
 
-                if(visited[ny][nx])
-                    continue;
+                if (x - 1 >= 0 && grid[x - 1][y] == '.' && grid[x - 1][ny] == '.' && canJump) {
+                    if (dist[x][ny] == -1) {
+                        dist[x][ny] = dist[x][y] + 1;
+                        q.push({ x, ny });
+                    }
+                }
+            }
 
-                if(is_moveable(x, y, nx, ny, rock_wall) == false)
-                    continue;
+            // 3. 위로 2칸
+            if (x - 2 >= 0 && grid[x - 1][y] == '.' && grid[x - 2][y] == 'H' && dist[x - 2][y] == -1) {
+                dist[x - 2][y] = dist[x][y] + 1;
+                q.push({ x - 2, y });
+            }
 
-                visited[ny][nx] = true;
-                if(rock_wall[ny][nx] == 'H')
-                    trace[ny][nx] = trace[y][x] + 1;
-                
-                q.push({nx, ny});
+            // 4. 좌상단
+            if (x - 1 >= 0 && y - 1 >= 0 && grid[x][y - 1] == '.' && grid[x - 1][y] == '.' && grid[x - 1][y - 1] == 'H') {
+                if (dist[x - 1][y - 1] == -1) {
+                    dist[x - 1][y - 1] = dist[x][y] + 1;
+                    q.push({ x - 1, y - 1 });
+                }
+            }
+
+            // 5. 우상단
+            if (x - 1 >= 0 && y + 1 < n && grid[x][y + 1] == '.' && grid[x - 1][y] == '.' && grid[x - 1][y + 1] == 'H') {
+                if (dist[x - 1][y + 1] == -1) {
+                    dist[x - 1][y + 1] = dist[x][y] + 1;
+                    q.push({ x - 1, y + 1 });
+                }
             }
         }
 
-        for(int i = 0; i < n; ++i)
-        {
-            for(int j = 0; j < n; ++j)
-                cout << trace[i][j] << " ";
-
-            cout << endl;
+        // 결과 출력
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (grid[i][j] == 'H') cout << (dist[i][j] == -1 ? -1 : dist[i][j]) << " ";
+                else cout << "0 ";
+            }
+            cout << "\n";
         }
     }
-    
+
     return 0;
 }

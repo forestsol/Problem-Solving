@@ -33,11 +33,11 @@ int main() {
 
         for (auto& corpse : corpses){
             int cx = corpse.first, cy = corpse.second;
-            board[cx][cy] += -m;
-            for (int x = 0; x<n; x++){
+            board[cx][cy] += -m; // 자신의 위치에 시간만큼 더하기
+            for (int x = 0; x<n; x++){ // 모든 맵을 순회
                 for( int y = 0; y<n; y++){
-                    if (x == cx && y == cy) continue;
-                    int distance = max(abs(cx-x), abs(cy-y));
+                    if (x == cx && y == cy) continue; // 자기 자신의 자리는 건너뛰기
+                    int distance = max(abs(cx-x), abs(cy-y)); //
                     if(distance <= m){
                         board[x][y] += -(m - distance + 1);
                     }

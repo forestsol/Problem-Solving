@@ -6,6 +6,17 @@
 using namespace std;
 using ull = unsigned long long;
 
+void print128(__int128 x) {
+    if (x == 0) { cout << '0'; return; }
+    string s;
+    while (x > 0) {
+        s.push_back(char('0' + x % 10));
+        x /= 10;
+    }
+    reverse(s.begin(), s.end());
+    cout << s;
+}
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -17,7 +28,7 @@ int main() {
         cin >> n;
 
         queue<ull> qa, qb;
-        ull remA = 0, remB = 0;
+        __int128 remA = 0, remB = 0;
 
         for (int i = 0; i < n; i++) {
             string cmd;
@@ -54,7 +65,10 @@ int main() {
             }
         }
 
-        cout << remA << " " << remB << "\n";
+        print128(remA);
+        cout << ' ';
+        print128(remB);
+        cout << '\n';
     }
 
     return 0;

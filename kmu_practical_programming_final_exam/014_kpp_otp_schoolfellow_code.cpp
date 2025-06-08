@@ -21,9 +21,9 @@ inline int gen_otp(long long A, long long B, long long C, long long t) {
 
 int main() {
     fastio;
-    int t;
-    cin >> t;
-    while(t--> 0){
+    int tc;
+    cin >> tc;
+    while(tc--> 0){
         int n;
         cin >> n;
         vector<long long> A(n+1), B(n+1), C(n+1);

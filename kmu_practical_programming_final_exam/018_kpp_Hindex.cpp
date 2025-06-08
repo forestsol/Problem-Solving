@@ -10,7 +10,29 @@ using namespace std;
 
 int main() {
     fastio;
+    int tc;
+    cin >> tc;
+    while(tc-- > 0){
+        int n;
+        cin >> n;
+        vector<int> citation(n);
+        for(int i = 0; i < n; ++i){
+            cin >> citation[i];
+        }
 
-    // 알고리즘 문제 풀이 시작
+        sort(citation.begin(), citation.end(), greater<int>());
+
+        int h_index = 0;
+
+        for(int i = 0; i < n; ++i){
+            if(citation[i] >= i+1){
+                h_index = i+1;
+            }
+            else {
+                break;
+            }
+        }
+        cout << h_index << endl;
+    }
     return 0;
 }

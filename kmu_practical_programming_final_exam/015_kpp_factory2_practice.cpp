@@ -1,15 +1,15 @@
 /***********************************************
- * 2025-05-16
+ * 2025-06-13
  ***********************************************/
 
 #include <bits/stdc++.h>
 using namespace std;
 using ull = unsigned long long;
 
-void print128(__int128 x) {
-    if (x == 0) { cout << '0'; return; }
+void print128(__int128 x){
+    if(x == 0) {cout << '0'; return;}
     string s;
-    while (x > 0) {
+    while(x>0){
         s.push_back(char('0' + x % 10));
         x /= 10;
     }
@@ -17,51 +17,59 @@ void print128(__int128 x) {
     cout << s;
 }
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+#define fastio ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+#define endl '\n'
 
-    int t;
-    cin >> t;
-    while (t--) {
+int main() {
+    fastio;
+    int tc;
+    cin >> tc;
+    while(tc--> 0){
         int n;
         cin >> n;
 
         queue<ull> qa, qb;
         __int128 remA = 0, remB = 0;
 
-        for (int i = 0; i < n; i++) {
+        for(int i = 0; i < n; i++){
             string cmd;
             cin >> cmd;
-            if (cmd == "ORDER") {
+            if(cmd == "ORDER"){
                 ull x;
                 char which;
                 cin >> x >> which;
-                if (which == 'A') {
+                if(which == 'A'){
                     qa.push(x);
                     remA += x;
-                } else if (which == 'B') {
+                }
+                else if(which == 'B'){
                     qb.push(x);
                     remB += x;
-                } else { // which == 'C'
-                    if (remA <= remB) {
+                }
+                else{
+                    if(remA <= remB){
                         qa.push(x);
                         remA += x;
-                    } else {
+                    }
+                    else{
                         qb.push(x);
                         remB += x;
                     }
-                }
-            } else { // cmd == "DONE"
+                } 
+            }
+            else{
                 char which;
                 cin >> which;
-                if (which == 'A') {
-                    ull y = qa.front(); qa.pop();
+                if(which == 'A'){
+                    ull y = qa.front();
+                    qa.pop();
                     remA -= y;
-                } else { // which == 'B'
-                    ull y = qb.front(); qb.pop();
+                }             
+                else{
+                    ull y = qb.front();
+                    qb.pop();
                     remB -= y;
-                }
+                }   
             }
         }
 
@@ -69,7 +77,7 @@ int main() {
         cout << ' ';
         print128(remB);
         cout << '\n';
-    }
 
+    }
     return 0;
 }

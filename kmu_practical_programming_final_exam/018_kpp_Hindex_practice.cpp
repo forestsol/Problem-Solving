@@ -12,20 +12,20 @@ int main() {
     fastio;
     int tc;
     cin >> tc;
-    while(tc--> 0){
+    while(tc-- > 0){
         int n;
         cin >> n;
         vector<int> cit(n);
-        for(int i = 0; i < n; ++i){
+        for(int i = 0; i < n; i++){
             cin >> cit[i];
         }
         sort(cit.rbegin(), cit.rend());
 
-        int h_index;
+        int h_index = 0;
 
-        for(int i = 0; i < n ; ++i){
+        for(int i = 0; i < n; i++){
             if(cit[i] >= i+1){
-                h_index = i + 1;
+                h_index = i+1;
             }
             else{
                 break;
@@ -33,6 +33,5 @@ int main() {
         }
         cout << h_index << endl;
     }
-    // 알고리즘 문제 풀이 시작
     return 0;
 }

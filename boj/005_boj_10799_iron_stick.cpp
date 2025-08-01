@@ -10,7 +10,9 @@ using namespace std;
 
 int main() {
     fastio;
-    // 알고리즘 문제 풀이 시작
+    // 하나의 쇠막대기 위에 올라가는 쇠막대기는, 온전히 올라간다 => 레이저 좌 우의 막대기 수가 같다.
+    // => 잘려도 이전과 차이가 없다.
+    // 올라가 있는 쇠막대기 하나가 온전히 끝나는 경우( '))' ), 달라진다.
     string sticks;
     cin >> sticks;
     stack<char> stack;
@@ -19,14 +21,14 @@ int main() {
 
     for(int i = 0; i < sticks.length(); i++){
         if(sticks[i] == '('){
-            stack.push(sticks[i]);
+            stack.push(sticks[i]); // 레이저가 만들어지기 전 쌓인 쇠막대기 갯수
         }
         else{
-            if(prev == '('){
-                stack.pop();
+            if(prev == '('){ // 레이저
+                stack.pop(); // 레이저도 '(' 로 카운팅 되면 안되니까 팝 한번 먼저
                 result += stack.size();
             }
-            else if(prev == ')'){
+            else if(prev == ')'){ // 쇠막대기의 끝지점
                 stack.pop();
                 result += 1;
             }

@@ -11,7 +11,7 @@
         "-O2",
         "\"${file}\"",
         "-o",
-        "\"${fileDirname}/${fileBasenameNoExtension}.exe\"",
+        "\"${fileDirname}/${fileBasenam eNoExtension}.exe\"",
         "&&",
         "\"${fileDirname}/${fileBasenameNoExtension}.exe\"",
       ],

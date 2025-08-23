@@ -10,7 +10,11 @@ using namespace std;
 
 int main() {
     fastio;
-    cout << "hello_world" << endl;
+    string s = "ooowooo";
+    cout << s.length() << endl;
+    cout << s.substr(0, 0+s.length()/2) << endl;
+    cout << s.substr(s.length()/2+1) << endl;
+
     // 알고리즘 문제 풀이 시작
     return 0;
 }

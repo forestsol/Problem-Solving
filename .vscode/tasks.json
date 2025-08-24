@@ -1,47 +1,58 @@
-// .vscode/tasks.json
 {
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Build C++",
+      "label": "C++ Build & Run Current File",
       "type": "shell",
-      "command": "g++",
+      "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
       "args": [
         "-std=c++17",
-        "-O2",
-        "\"${file}\"",
+        "-g",
+        "${file}",
         "-o",
-        "\"${fileDirname}/${fileBasenameNoExtension}.exe\"",
+        "${fileDirname}/${fileBasenameNoExtension}.exe",
         "&&",
-        "\"${fileDirname}/${fileBasenameNoExtension}.exe\"",
+        "${fileDirname}/${fileBasenameNoExtension}.exe"
       ],
       "options": {
         "shell": {
           "executable": "cmd.exe",
-          "args": ["/d", "/c"]
+          "args": [
+            "/d",
+            "/c"
+          ]
         }
       },
       "group": {
         "kind": "build",
-        "isDefault": true  // 기본 빌드로 이걸 사용
+        "isDefault": true
       },
       "problemMatcher": ["$gcc"],
-      "detail": "실전용 C++ 빌드 (빠른 실행)"
+      "detail": "현재 활성화된 C++ 파일을 컴파일하고 실행합니다."
     },
     {
-      "label": "Build C++ Debug",
+      "label": "C++ Build Debug", // 디버그용 빌드 작업
       "type": "shell",
-      "command": "g++",
+      "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
       "args": [
         "-std=c++17",
-        "-g",
-        "\"${file}\"",
+        "-g", // 디버깅 정보를 포함
+        "${file}",
         "-o",
-        "\"${fileDirname}/${fileBasenameNoExtension}.exe\""
+        "${fileDirname}/${fileBasenameNoExtension}.exe"
       ],
+      "options": {
+        "shell": {
+          "executable": "cmd.exe",
+          "args": [
+            "/d",
+            "/c"
+          ]
+        }
+      },
       "group": "build",
       "problemMatcher": ["$gcc"],
-      "detail": "디버깅용 C++ 빌드 (gdb 사용 가능)"
+      "detail": "F5 디버깅을 위한 빌드 작업입니다."
     }
   ]
 }

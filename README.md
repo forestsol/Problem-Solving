@@ -27,9 +27,22 @@
 ✅ 1. VSCode 설치
 
 ✅ 2. C++ 컴파일러 설치
-+ MinGW 설치
-> https://m.blog.naver.com/dorergiverny/223032334186
-
++ MYSY2 설치
+  > https://www.msys2.org/
++ 사이트에서 installer찾아서 설치, 경로 수정 할 필요 없음.
++ 설치하면 여러 터미널이 보이는데, 그 중 **MSYS2 MINGW64** 터미널 실행
++ 아래 명령어를 입력하여 최신 컴파일러 도구 모음을 설치(명령어 입력 -> 엔터 -> Y입력)
+  ```Bash
+  pacman -S mingw-w64-x86_64-toolchain
+  ```
++ 설치가 완료되면 g++ --version을 입력하여 버전이 잘 나오는지 확인
++ 환경변수 등록
+  + 윈도우 검색창에 **"시스템 환경 변수 편집"**
+  + **"시스템 변수"** 목록에서 Path를 찾아 **"편집"** 누르기  
+  + "새로 만들기"를 클릭하고 아래 경로 입력
+    > C:\msys64\mingw64\bin
+  + 해당 경로를 맨 위로 이동
+  
 ✅ 3. VSCode 확장 프로그램 설치
 + vs설치 및 기본 세팅
 > https://velog.io/@jjoung-2j/Visual-Studio-Code-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%84%A4
@@ -57,21 +70,22 @@ g++ hello.cpp -o hello
 {
   "configurations": [
     {
-      "name": "Win32",
+      "name": "MinGW-w64",
       "includePath": [
         "${workspaceFolder}/**",
-        "${workspaceFolder}/bits"  // 🔥 이 줄을 추가
+        "C:/msys64/mingw64/include"
       ],
       "defines": [],
-      "compilerPath": "C:/MinGW/bin/g++.exe", // 🔥 cl.exe 에서 g++ 경로로 수정
+      "compilerPath": "C:/msys64/mingw64/bin/g++.exe",
       "cStandard": "c17",
       "cppStandard": "c++17",
-      "intelliSenseMode": "windows-gcc-x64" // 🔥 msvc에서 gcc로 수정
+      "intelliSenseMode": "windows-gcc-x64"
     }
   ],
   "version": 4
 }
 ```
++ vscode 터미널에 g++ --version 입력하여 컴파일러 버전 확인
 
 ✅ 7. boj 용 C++ Snippets 설정 (선택) : boj를 입력하고 Tab을 누르면 탬플릿 자동완성
 
@@ -95,8 +109,8 @@ g++ hello.cpp -o hello
     "",
     "int main() {",
     "    fastio;",
-    "",
     "    // 알고리즘 문제 풀이 시작",
+    "",
     "    return 0;",
     "}"
   ],

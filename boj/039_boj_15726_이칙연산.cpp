@@ -10,13 +10,11 @@ using namespace std;
 
 int main() {
     fastio;
-    int a, b, c;
+    long long a, b, c, d, e;
     cin >> a >> b >> c;
 
-    int d = a * b / c;
-    int e = a / b * c;
-
-    cout << 1/10 << endl;
+    d = (double)(a * b) / c;
+    e = ((double)a / b) * c;
 
     if(d >= e){
         cout << d;

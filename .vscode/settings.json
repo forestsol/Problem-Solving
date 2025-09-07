@@ -9,6 +9,13 @@
       "set": "cpp",
       "format": "cpp",
       "cmath": "cpp",
-      "complex": "cpp"
+      "complex": "cpp",
+      "deque": "cpp",
+      "list": "cpp",
+      "string": "cpp",
+      "unordered_map": "cpp",
+      "unordered_set": "cpp",
+      "flat_map": "cpp",
+      "flat_set": "cpp"
     }
 }

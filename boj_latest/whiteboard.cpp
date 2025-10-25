@@ -10,14 +10,14 @@ using namespace std;
 
 int main() {
     fastio;
-    int int1 = 102;
-    string str1 = to_string(int1);
-    
-    if(str1[1] == '0'){
-        cout << "testgood" << endl;
-    }else{
-        cout << "fuck" << endl;
-    }
+    string a, b;
+    cin >> a >> b;
+
+    #include <boost/multiprecision/cpp_int.hpp>
+    using namespace boost::multiprecision;
+
+    cpp_int A(a), B(b);
+    cout << a+b << '\n' << a-b << '\n' << a*b << endl;
     // 알고리즘 문제 풀이 시작
     return 0;
 }

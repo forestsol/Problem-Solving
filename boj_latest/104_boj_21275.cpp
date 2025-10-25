@@ -19,7 +19,7 @@ int findMinDigit(string str){  // a같은 문자가 들어간 문자열로 10진
             digit = max(digit, str[i] - 'a' + 10); // 10진법 이상
         }
     }
-    return max(2, digit+1); // 최소 진법은 2진법부터, 
+    return max(2, digit+1); // 최소 진법은 2진법부터,
 }
 
 ll changeDecimalNumber(string str, int digit){

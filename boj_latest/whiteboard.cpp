@@ -1,5 +1,5 @@
 /***********************************************
- * 2025-10-26
+ * 2025-11-16
  ***********************************************/
 
 #include <bits/stdc++.h>
@@ -9,8 +9,10 @@ using namespace std;
 #define endl '\n'
 
 int main() {
-    fastio;
-    // 알고리즘 문제 풀이 시작
-
-    return 0;
+	fastio;
+	// 알고리즘 문제 풀이 시작
+	int a, b;
+	cin >> a >> b;
+	cout << a+b << endl;
+	return 0;
 }

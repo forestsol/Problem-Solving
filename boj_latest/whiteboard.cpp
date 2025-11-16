@@ -10,7 +10,5 @@ using namespace std;
 
 int main() {
     fastio;
-    // 알고리즘 문제 풀이 시작
-
-    return 0;
+    cout << 7/3 << endl;
 }

@@ -50,6 +50,12 @@
 > https://velog.io/@watermeloncrane/vscode%EC%97%90%EC%84%9C-CC-%EC%84%B8%ED%8C%85-%EC%89%AC%EC%9B%80
 + Code Runner 도 설치
 > https://y-dev.tistory.com/26
++ auto save 설정   
+> 1. VS Code에서 단축키 Ctrl + , (콤마)를 눌러 설정(Settings) 창을 엽니다.   
+> 2. 맨 위 검색창에 Auto Save라고 검색합니다.   
+> 3. Files: Auto Save 항목을 off에서 afterDelay로 변경합니다.
++ git 설치
+> https://junesker.tistory.com/95
 
 ✅ 4. C++ 파일 작성 & 실행
 + 아래 명령어로 컴파일하고 실행:

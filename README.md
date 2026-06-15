@@ -46,6 +46,8 @@
 ✅ 3. VSCode 확장 프로그램 설치
 + vs설치 및 기본 세팅
 > https://velog.io/@jjoung-2j/Visual-Studio-Code-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%84%A4
++ vscode c++ 세팅
+> https://velog.io/@watermeloncrane/vscode%EC%97%90%EC%84%9C-CC-%EC%84%B8%ED%8C%85-%EC%89%AC%EC%9B%80
 + Code Runner 도 설치
 > https://y-dev.tistory.com/26
 

@@ -42,35 +42,33 @@
   + "새로 만들기"를 클릭하고 아래 경로 입력
     > C:\msys64\mingw64\bin
   + 해당 경로를 맨 위로 이동
+
+✅ 3. git 설치
+> https://junesker.tistory.com/95
   
-✅ 3. VSCode 확장 프로그램 설치
+✅ 4. VSCode 확장 프로그램 설치
 + vs설치 및 기본 세팅
 > https://velog.io/@jjoung-2j/Visual-Studio-Code-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%84%A4
 + vscode c++ 세팅
 > https://velog.io/@watermeloncrane/vscode%EC%97%90%EC%84%9C-CC-%EC%84%B8%ED%8C%85-%EC%89%AC%EC%9B%80
 + Code Runner 도 설치
 > https://y-dev.tistory.com/26
-+ auto save 설정   
-> 1. VS Code에서 단축키 Ctrl + , (콤마)를 눌러 설정(Settings) 창을 엽니다.   
-> 2. 맨 위 검색창에 Auto Save라고 검색합니다.   
-> 3. Files: Auto Save 항목을 off에서 afterDelay로 변경합니다.
-+ git 설치
-> https://junesker.tistory.com/95
 
-✅ 4. C++ 파일 작성 & 실행
+
+✅ 5. C++ 파일 작성 & 실행
 + 아래 명령어로 컴파일하고 실행:
 ```
 g++ hello.cpp -o hello
 ./hello   # (Windows에선 hello.exe)
 ```
 
-✅ 5. 자동 빌드 & 디버그 설정
+✅ 6. 자동 빌드 & 디버그 설정
 (이 레포 안에 있는거 그대로 가져가기)
 + .vscode 폴더 만들고, 다음 파일 생성:
   + tasks.json (컴파일 자동화용)
   + launch.json (디버깅 설정용)
 
-✅ 6. bits/stdc++.h
+✅ 7. bits/stdc++.h
 1. 루트폴더에 /bits/stdc++.h 생성(stdc++.h 다운로드 https://hkhan.tistory.com/36)
 2. Ctrl + Shift + P → "C/C++: Edit Configurations (UI)" → 하단 "Edit in settings.json" → c_cpp_properties.json 클릭 → .vscode/c_cpp_properties.json가 생성될것임.
 3. c_cpp_properties.json 아래 코드와 같이 수정
@@ -95,7 +93,7 @@ g++ hello.cpp -o hello
 ```
 + vscode 터미널에 g++ --version 입력하여 컴파일러 버전 확인
 
-✅ 7. boj 용 C++ Snippets 설정 (선택) : boj를 입력하고 Tab을 누르면 탬플릿 자동완성
+✅ 8. boj 용 C++ Snippets 설정 (선택) : boj를 입력하고 Tab을 누르면 탬플릿 자동완성
 
 1. ctrl + shift + P 눌러 커맨드 팔레트 켜기
 2. "Preferences: Configure User Snippets" 검색
@@ -126,7 +124,7 @@ g++ hello.cpp -o hello
 }
 ```
 
-✅ 8. .md 용 markdown Snippets 설정 (선택) : mdlog를 입력하고 crtl+space를 누르면 탬플릿 자동완성
+✅ 9. .md 용 markdown Snippets 설정 (선택) : mdlog를 입력하고 crtl+space를 누르면 탬플릿 자동완성
 
 1. ctrl + shift + P 눌러 커맨드 팔레트 켜기
 2. "Preferences: Configure User Snippets" 검색
@@ -149,8 +147,12 @@ g++ hello.cpp -o hello
   "description": "알고리즘 문제 정리용 마크다운 템플릿"
 }
 ```
+✅ 10. auto save 설정   
+1. VS Code에서 단축키 Ctrl + , (콤마)를 눌러 설정(Settings) 창을 엽니다.   
+2. 맨 위 검색창에 Auto Save라고 검색합니다.   
+3. Files: Auto Save 항목을 off에서 afterDelay로 변경합니다.
 
-✅ 9. VSCode 탐색기에서 .exe 숨김 설정 + gitignore
+✅ 11. VSCode 탐색기에서 .exe 숨김 설정 + gitignore
 1. Ctrl + Shift + P → Preferences: Open Workspace Settings (JSON) 검색
 2. 중괄호 안에 아래 코드 붙여넣고 ctrl+s로 세이브
 ```json
@@ -170,4 +172,10 @@ g++ hello.cpp -o hello
 ### 🤖 2. VScode GitHub Copilot 켜고 끄는 방법:
 1. 설정 열기 (Ctrl + Shift + P)
 2. Copilot: Enable or Copilot: Disable 입력
-
+---
+### git
+```bash
+git add .   
+git commit -m "message"
+git push
+```

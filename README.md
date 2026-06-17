@@ -168,7 +168,7 @@ g++ hello.cpp -o hello
 *.exe
 ```
 
-✅ 10. json파일을 읽기 위한 nlohmann/json.hpp 추가
+✅ 12. json파일을 읽기 위한 nlohmann/json.hpp 추가
 https://maloveforme.tistory.com/212
 
 ---

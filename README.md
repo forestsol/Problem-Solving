@@ -168,6 +168,9 @@ g++ hello.cpp -o hello
 *.exe
 ```
 
+✅ 10. json파일을 읽기 위한 nlohmann/json.hpp 추가
+https://maloveforme.tistory.com/212
+
 ---
 ### 🤖 2. VScode GitHub Copilot 켜고 끄는 방법:
 1. 설정 열기 (Ctrl + Shift + P)
